@@ -1,0 +1,82 @@
+
+<style>
+
+
+.btn-search{
+    border-radius: 1rem;
+     background-color: #407BFF;
+    color: black;
+     margin-left: 6px;
+      border: 3px solid black;
+}
+
+.btn-search:hover{
+
+background-color: aliceblue !important;
+cursor: pointer !important;
+}
+
+
+
+
+</style>
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="/listings/home"><i class="fa-regular fa-compass"></i></a>
+      <h3 class="logo font-bold flex items-center text-blue col-2 mt-6 ">Wanderlust </h3>
+     
+      <!-- Brand/logo linking to the home page -->
+
+      <!-- Navbar toggler button for collapsing on smaller screens -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+
+      
+      <form class="d-flex" role="search">
+        <input class="form-control me-6 offset-9" style="width: 300px; border: 3px solid #407BFF;
+        border-radius: 1rem; " type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success btn-search" 
+         " type="submit">Search</button>
+      </form>
+
+
+      <!-- Navbar content, including links and dropdown menu -->
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav offset-6">
+
+
+              <!-- Home link -->
+              <a class="nav-link  text-blue hovbtn" href="/listings/home">Home</a>
+
+              <!-- All Listings link -->
+              <a class="nav-link  text-blue hovbtn" href="/listings">All Listings</a>
+
+              <!-- Add New Listing link -->
+              <a class="nav-link  text-blue hovbtn" href="/listings/new">Add New Listing</a>
+
+              <!-- User dropdown menu -->
+              <div class="navbar-nav nav-item dropdown">
+                  <a class="nav-link dropdown-toggle hovbtn text-blue" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      User
+                  </a>
+                  <!-- Dropdown menu items -->
+                  <ul class="dropdown-menu col-1" aria-labelledby="navbarDropdownMenuLink">
+                      <!-- If no user is logged in, display Register and LogIn links -->
+                      <% if (!currentUser) { %>
+                          <li><a class="dropdown-item  text-blue hovbtn" href="/signup">Register</a></li> <!-- Register link -->
+                          <li><a class="dropdown-item  text-blue hovbtn" href="/login">LogIn</a></li> <!-- LogIn link -->
+                      <% } %>
+                      <!-- If user is logged in, display LogOut link -->
+                      <% if (currentUser) { %>
+                          <li><a class="dropdown-item  text-blue hovbtn" href="/logout">LogOut</a></li> <!-- LogOut link -->
+                      <% } %>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</nav>

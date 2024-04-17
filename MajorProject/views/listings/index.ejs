@@ -1,0 +1,176 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wanderlust</title>
+</head> -->
+
+<%layout("/layouts/boilerplate")%>
+
+
+
+<!-- this  code is from ejs-mate that will make every page look like the boilerplate design-->
+<body>
+    <h3 style="margin-top: 20px;" class="title">Exciting Places For You To Stay In </h3> 
+    <!-- <form method="GET" action="/listings/new">
+        <button>Create New Listing</button>
+    </form>                   -->
+
+    <!-- line 10 -- this consists a form and a button to create new listing which will be used in part 4 (create route) this form wil send a GET request to the listing/new path 
+     -->
+     
+
+     <style>
+      #filters{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        
+
+      }
+
+      .filters{
+        text-align: center;
+        margin-right: 2rem;
+        margin-top: 2rem;
+        opacity:0.7;
+      }
+
+      .filters:hover{
+     opacity: 1;
+     color:  #407BFF;
+     cursor: pointer;
+      }
+
+       .topic {
+        font-size:0.9rem;
+      }
+
+
+      .taxinfo{
+       display: none;
+       color: #407BFF;
+      }
+
+
+      .tax-toggle{
+
+        border: 2px solid #407BFF;
+        border-radius: 1rem;
+       
+        height: 3.5rem;
+        padding: 1rem;
+        margin-left:18rem ;
+        display: flex;
+        align-items: center;
+
+      }
+     </style>
+
+<div id="filters">
+
+
+<div class="filters" >
+  <div><i class="fa-solid fa-fire"></i></div>
+<p class="topic">Trending</p>
+</div>
+
+<div class="filters" >
+  <div><i class="fa-solid fa-bed"></i></i></div>
+<p class="topic">Rooms</p>
+</div>
+
+
+<div class="filters" >
+  <div><i class="fa-solid fa-city"></i></div>
+
+  <p class="topic ">Popular Cities</p>
+</div>
+
+
+<div class="filters" >
+  <div><i class="fa-solid fa-mountain"></i></i></div>
+<p class="topic">Towards Nature</p>
+</div>
+
+
+<div class="filters" >
+  <div><i class="fa-brands fa-fort-awesome"></i></div>
+<p class="topic">Historic Places</p>
+</div>
+
+
+<div class="filters" >
+  <div><i class="fa-solid fa-tractor"></i></i></i></div>
+<p class="topic">Villages</p>
+</div>
+
+
+
+
+<div class="filters" >
+  <div><i class="fa-regular fa-snowflake"></i></div>
+<p class="topic">Chill Places</p>
+</div>
+
+<div class="tax-toggle">
+
+  <div class="form-check-reverse form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+    <label class="form-check-label" for="flexSwitchCheckDefault">Display Taxes</label>
+  </div>
+
+</div>
+
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-1 mt-3">
+    <%for (let listing of allListings){%>
+      <div class="card col listing-card" style="width: 20rem">
+     <a href="/listings/<%=listing._id%>" class="listing-link ">
+    
+        <img src="<%=listing.image.url%>" class="card-img-top" alt="Listing Image" style="height:20rem;">   
+        <div class="card-img-overlay"></div>
+        <div class="card-body" >
+          <p class="card-text">
+            <i><b><%=listing.title%></b></i>
+            <br><%=listing.description%>
+            <br>
+            <b> &#8377;<%=listing.price.toLocaleString("en-IN")%></b><i>/Night</i>
+            <i class="taxinfo"> &nbsp;&nbsp;+18%GST</i>
+        </p>
+        </div>
+      </a>
+      </div>
+      
+    
+    
+      <%}%> 
+
+</div>
+
+<script>
+  let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+  taxSwitch.addEventListener("click",()=>{
+    console.log("clicked");
+
+    let taxinfo= document.getElementsByClassName("taxinfo");
+
+for(info of taxinfo){
+  if(info.style.display !="inline"){
+    info.style.display="inline";
+  } else{
+  info.style.display="none";
+}
+}
+
+  });
+</script>
+<!-- this page consists of the listing page ejs code  -- listing route (part 1) in app.js
+line no 20-- has a for of loop to pront all the names of the hotels that we have in our data base inside a ul tag 
+line no 21-- has a combination of anchor tag and list tag so when we click on  the name of the hotek we will be directed to the listing/id page of that hotel making a show route 
+that will show the details of individual hotel -->
+
+
+</body>
+<!-- </html> -->
